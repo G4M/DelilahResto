@@ -1,17 +1,16 @@
-
 const express = require('express');
 const server = express();
 const bodyparser = require('body-parser');
+const jwt = require('jsonwebtoken');
+const firma = 'DelilahResto';
 const Sequelize = require('sequelize');
+const sql = require('mysql2');
 const sequelize = new Sequelize('mysql://root:@localhost:3306/delilahresto');
-server.listen(3000, () => {
-    console.log("se ha iniciado el server");
-});
-
+server.listen(3000, () => {console.log("Se Inicio el Servidor en el puerto 3000");});
+server.use(bodyparser.json());
 
 async function getAll(table){
 let datos;
-console.log(table);
 if(table=='/usuarios'){
 datos = await sequelize.query('SELECT * FROM usuarios',
 {type: sequelize.QueryTypes.SELECT}
@@ -34,12 +33,10 @@ return datos;
 });
 return datos;
 }else{
-    return (res.status(500).send('Error: Algo Salio Mal'))}
+    return}
 }
-//CRUD: Create , Read, Update, Delete
 
 async function createUser(username, fullname, email, tel, adress, pass){
-    //INSERT INTO albumes VALUES(null, "El Tesoro De Los Inocentes", 1, '2004-12-01')
     let datos = await sequelize.query('INSERT INTO usuarios VALUES(null, ?, ?, ?, ?, ?, ?)',
     {replacements: [username, fullname, email, tel, adress, pass]})
     .then(function(resultados){
@@ -47,15 +44,13 @@ async function createUser(username, fullname, email, tel, adress, pass){
     })
 }
 
-server.get('/usuarios', async (req,res)=>{
-        res.json(await getAll(req.path));
+server.get('/*', async (req,res)=>{
+        const result = await getAll(req.path);
+        if(result){
+        res.json(result);}else{
+            res.status(400).send('Error: Solicitud Incorrecta')
+        }
     });
-server.get('/productos', async (req,res)=>{
-    res.json(await getAll(req.path));
-});
-server.get('/pedidos', async (req,res)=>{
-    res.json(await getAll(req.path));
-});
 
 server.post('/newUser', async(req,res)=>{
     if(!req.query.username || !req.query.fullname || !req.query.email || !req.query.tel || !req.query.adress || !req.query.pass){
@@ -64,3 +59,22 @@ server.post('/newUser', async(req,res)=>{
     createUser(req.query.username, req.query.fullname, req.query.email, req.query.tel, req.query.adress, req.query.pass);
     res.send("Usuario registrado");
 });
+
+server.post('/login',(req,res)=>{
+    const { usuario, contrasena} = req.body
+    const validado = validarUser(usuario, contrasena)
+
+    if(validado==false){
+        res.json({error: 'Usuario o contraseña incorrecta'});
+        return;
+    }
+    const token = jwt.sign({
+        usuario
+    }, firma);
+    res.json({token});
+});
+
+function validarUser(usuario, contrasena){
+    console.log("User y pass: "+usuario+ " " + contrasena);
+    return true;
+}
