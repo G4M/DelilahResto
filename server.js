@@ -7,16 +7,18 @@ const Sequelize = require('sequelize');
 const sql = require('mysql2');
 const sequelize = new Sequelize('mysql://root:@localhost:3306/delilahresto');
 server.listen(3000, () => {console.log("Se Inicio el Servidor en el puerto 3000");});
-
-
 server.use(bodyparser.json());
 
+//Importacion de Funciones
 const gettersRoute = require('./getters');
+const login = require('./jwt');
 
+//Implementación de endpoints
 server.use('/get', gettersRoute);
+server.use('/api', login);
 
 
-
+/*
 async function createUser(username, fullname, email, tel, adress, pass){
     let datos = await sequelize.query('INSERT INTO usuarios VALUES(null, ?, ?, ?, ?, ?, ?)',
     {replacements: [username, fullname, email, tel, adress, pass]})
@@ -51,3 +53,4 @@ function validarUser(usuario, contrasena){
     console.log("User y pass: "+usuario+ " " + contrasena);
     return true;
 }
+*/

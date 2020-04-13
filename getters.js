@@ -8,6 +8,7 @@ const sequelize = new Sequelize('mysql://root:@localhost:3306/delilahresto');
 const sql = require('mysql2');
 
 router.get('/*', async (req,res)=>{
+    console.log(req);
     const result = await getAll(req.path);
     if(result){
     res.json(result);}else{
