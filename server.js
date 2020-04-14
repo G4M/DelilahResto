@@ -1,11 +1,7 @@
 const express = require('express');
 const server = express();
 const bodyparser = require('body-parser');
-const jwt = require('jsonwebtoken');
-const firma = 'DelilahResto';
 const Sequelize = require('sequelize');
-const sql = require('mysql2');
-const sequelize = new Sequelize('mysql://root:@localhost:3306/delilahresto');
 server.listen(3000, () => {console.log("Se Inicio el Servidor en el puerto 3000");});
 server.use(bodyparser.json());
 

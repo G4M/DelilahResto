@@ -11,6 +11,8 @@ app.use(bodyparser.json());
 app.post('/login', async (req, res) => {
     let mailingre = req.body.user;
     let passingre = req.body.password;
+    let signed = jwt.sign(mailingre, firma);
+    console.log(signed);
     let datos = await sequelize.query('SELECT * FROM usuarios where email = ?',
     {replacements: [mailingre], type: sequelize.QueryTypes.SELECT}
 ).then(ress=>{
@@ -18,11 +20,12 @@ app.post('/login', async (req, res) => {
     });
 
     if(datos.password==passingre){
-        res.json(datos);
+        console.log(datos.password);
+        console.log(passingre);
+        res.json(signed);
     }else{
         res.status(400).send('error: Mail o contraseña incorrecto');
-    }
-    
+    }    
 });
 
 module.exports = app;
