@@ -6,9 +6,9 @@ server.listen(3000, () => {console.log("Se Inicio el Servidor en el puerto 3000"
 server.use(bodyparser.json());
 
 //Importacion de Funciones
-const gettersRoute = require('./getters');
-const login = require('./login');
-const register = require('./register');
+const gettersRoute = require('./ServerFunctions/getters');
+const login = require('./ServerFunctions/login');
+const register = require('./ServerFunctions/register');
 
 //Implementación de endpoints
 server.use('/get', gettersRoute);
