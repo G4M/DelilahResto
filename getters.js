@@ -16,23 +16,23 @@ router.get('/*', async (req,res)=>{
     }
 });
 
-async function getAll(table){
+async function getAll(endpoint){
 let datos;
-if(table=='/usuarios'){
+if(endpoint=='/usuarios'){
 datos = await sequelize.query('SELECT * FROM usuarios',
 {type: sequelize.QueryTypes.SELECT}
 ).then(res=>{
     return(res);
 });
 return datos;}
-else if(table=='/productos'){
+else if(endpoint=='/productos'){
     datos = await sequelize.query('SELECT * FROM productos',
     {type: sequelize.QueryTypes.SELECT}
 ).then(res=>{
     return(res);
 });
 return datos;
-}else if(table=='/pedidos'){
+}else if(endpoint=='/pedidos'){
     datos = await sequelize.query('SELECT * FROM pedidos',
     {type: sequelize.QueryTypes.SELECT}
 ).then(res=>{

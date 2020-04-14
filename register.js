@@ -5,6 +5,7 @@ const firma = 'DelilahResto';
 const Sequelize = require('sequelize');
 const sql = require('mysql2');
 const sequelize = new Sequelize('mysql://root:@localhost:3306/delilahresto');
+const hasher = require('./hasher');
 register.use(bodyparser.json());
 
 register.post('/newUser', async(req,res)=>{
@@ -14,7 +15,8 @@ register.post('/newUser', async(req,res)=>{
     }
     let comprobante = await comprobacion(req.body.username, req.body.email);
     if(comprobante===true){
-    createUser(req.body.username, req.body.fullname, req.body.email, req.body.tel, req.body.adress, req.body.pass);
+        let passhash = await hasher.hash(req.body.pass)
+    createUser(req.body.username, req.body.fullname, req.body.email, req.body.tel, req.body.adress, passhash);
     res.status(201).send("Usuario registrado");}
     else{res.status(400).send(comprobante);}
 });
