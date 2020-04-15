@@ -22,7 +22,10 @@ router.get('/*', async (req,res)=>{
 async function getAll(endpoints){
 let datos;
 let endpoint = endpoints.path;
-
+let usuario =  await jwt.verify(endpoints.query.token, firma, function(err, user){
+    if(err){res.status(401).send({error: 'Token inválido'})
+    }else{return user;}
+  });
 if(endpoint=='/usuarios'){
 datos = await sequelize.query('SELECT * FROM usuarios',
 {type: sequelize.QueryTypes.SELECT}
