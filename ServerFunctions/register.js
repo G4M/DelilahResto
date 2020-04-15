@@ -25,15 +25,13 @@ async function createUser(username, fullname, email, tel, adress, pass){
     let datos = await sequelize.query('INSERT INTO usuarios VALUES(null, ?, ?, ?, ?, ?, ?)',
     {replacements: [username, fullname, email, tel, adress, pass]})
     .then(function(resultados){
-        console.log(resultados);
+        //console.log(resultados);
     })
 }
 
 //funcion que comprueba si existe usuario o email en la base de datos
 //devuelve true si no existen o un string correspondiente al error
 async function comprobacion(username, email){
-    console.log("user recived: "+username);
-    console.log("email recived: "+email);
     let mailok;
     let userok;
     let datos = await sequelize.query('SELECT * FROM usuarios where email = ?',
