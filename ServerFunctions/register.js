@@ -35,20 +35,6 @@ register.post('/pedidos', async(req,res)=>{
     res.status(201).send('El pedido se registro correctamente');
     }
 });
-   /*
-    let datosproductos = await sequelize.query('INSERT INTO productosxpedidos VALUES(null, ?, ?, ?, ?, ?, ?)',
-    {replacements: [usuario.id]})
-    .then(function(resultados){
-        console.log("pedido registrado" + resultados);
-    });
-    */
-// del token se obtiene id de usuario y en el req.query debe enviar los datos para el registro del pedido
-// primero se debe registrar el pedido para obtener el id y luego con ese id pegarle a la tabla productosxpedidos
-
-// INSERT into pedidos VALUES(null, 'pendiente', 'current_timestamp()', 'pendiente', usuario.id)
-// SELECT MAX(id) from pedidos
-// INSERT INTO productosxpedidos VALUES(null, 3, 3)
-
 
 register.post('/newUser', async(req,res)=>{
     if(!req.body.username || !req.body.fullname || !req.body.email || !req.body.tel || !req.body.adress || !req.body.pass){
