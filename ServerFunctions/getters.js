@@ -74,8 +74,4 @@ return datos;
     return}
 }
 
-function tienePermisos(usuario){
-    console.log("Get del user: "+usuario);
-}
-
 module.exports = router;
