@@ -9,8 +9,10 @@ server.use(bodyparser.json());
 const gettersRoute = require('./ServerFunctions/getters');
 const login = require('./ServerFunctions/login');
 const register = require('./ServerFunctions/register');
+const update = require('./ServerFunctions/update')
 
 //Implementación de endpoints
 server.use('/get', gettersRoute);
 server.use('/api', login);
 server.use('/register', register);
+server.use('/update', update);

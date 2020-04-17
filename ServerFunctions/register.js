@@ -9,7 +9,7 @@ const hasher = require('./hasher');
 register.use(bodyparser.json());
 
 register.post('/pedidos', async(req,res)=>{
-    if(!req.query.token){res.status(400).send('Error: Solicitud Incorrecta Falta Token');}
+    if(!req.query.token){res.status(400).send('Error: Solicitud Incorrecta Token');}
         let usuario =  await jwt.verify(req.query.token, firma, function(err, user){
             if(err){res.status(401).send({error: 'Token inválido'})
             }else{return(user);}
@@ -19,8 +19,10 @@ register.post('/pedidos', async(req,res)=>{
    
     if(!articulos.length>0){res.status(400).send('Error: Solicitud Incorrecta en formato de pedido');}
     else{
+        let hoy = new Date();
+        let hora = hoy.getHours() + ':' + hoy.getMinutes() + ':' + hoy.getSeconds();
     let datospedido = await sequelize.query('INSERT INTO pedidos VALUES(null, ?, ?, ?, ?)',
-    {replacements: ['pendiente', "current_timestamp()", 'pendiente', usuario.id]})
+    {replacements: ['NUEVO', hora, 'pendiente', usuario.id]})
     .then(function(resultados){
         console.log(resultados);
         return resultados;
