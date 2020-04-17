@@ -8,12 +8,34 @@ const sequelize = new Sequelize('mysql://root:@localhost:3306/delilahresto');
 const hasher = require('./hasher');
 register.use(bodyparser.json());
 
+register.post('/productos', async(req,res)=>{
+    if(!req.query.token){res.status(400).send('Error: Solicitud Incorrecta Token');}
+    let usuario =  await jwt.verify(req.query.token, firma, function(err, user){
+        if(err){res.status(401).send({error: 'Token inválido'})
+        }else{return(user);}
+      });
+    let permiso = (usuario.usertype==='admin');
+    if(permiso!==true){
+        res.status(500).send('Error: El usuario no tiene permisos para la acción que desea realizar');}
+        else if(!req.body.nombre||!req.body.precio||!req.body.urlimagen){
+            res.status(500).send('Error: Faltan parametros');}
+            else{
+                let datosproducto = await sequelize.query('INSERT INTO productos VALUES(null, ?, ?, ?)',
+                {replacements: [req.body.nombre, req.body.precio, req.body.urlimagen]})
+                .then(function(resultados){
+                    res.status(201).send('Producto registrado exitosamente');
+                });
+            }
+        
+});
+
 register.post('/pedidos', async(req,res)=>{
     if(!req.query.token){res.status(400).send('Error: Solicitud Incorrecta Token');}
         let usuario =  await jwt.verify(req.query.token, firma, function(err, user){
             if(err){res.status(401).send({error: 'Token inválido'})
             }else{return(user);}
           });
+
     if(!req.body.pedido || !usuario){res.status(400).send('Error: Solicitud Incorrecta Faltan parametros');}
     let articulos = req.body.pedido;
    

@@ -16,12 +16,7 @@ update.patch('/pedidos', async(req,res)=>{
             }else{return(user);}
           });
         let permiso = (usuario.usertype==='admin');
-        console.log("el permiso es: "+permiso);
-        console.log("id_pedido: " + req.body.id_pedido);
-        console.log("Estado: "+ req.body.estado);
     //verificacion de parametros recibidos
-    
-    
     if(permiso!==true||!req.body.id_pedido||!req.body.estado){
         res.status(500).send('Error: Faltan o hay parametros erroneos');
 }else if(req.body.estado=='NUEVO'||req.body.estado=='CONFIRMADO'||
