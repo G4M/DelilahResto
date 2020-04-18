@@ -11,6 +11,7 @@ app.use(bodyparser.json());
 app.post('/login', async (req, res) => {
     let mailingre = req.body.user;
     let passingre = req.body.pass;
+    console.log("user: "+mailingre + " pass: "+passingre);
     
     let datos = await sequelize.query('SELECT * FROM usuarios where email = ?',
     {replacements: [mailingre], type: sequelize.QueryTypes.SELECT}

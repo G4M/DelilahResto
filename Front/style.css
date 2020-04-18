@@ -13,7 +13,7 @@ body {
 header {
   width: 100%;
   height: 20vh;
-  background-color: lightcoral;
+  background-color: #53cee4;
   display: flex;
   justify-content: center;
   align-items: center; }
@@ -33,7 +33,8 @@ section {
     width: 90%;
     border: 1px solid black;
     font-size: 1em;
-    color: lightseagreen; }
+    color: lightseagreen;
+    margin-left: 15px; }
 
 .botones {
   display: flex;
@@ -43,7 +44,7 @@ section {
   .botones button {
     width: 60vw; }
   .botones .start {
-    background-color: lightcoral;
+    background-color: #e96d47;
     color: white;
     height: 15vh;
     border-radius: 50px; }

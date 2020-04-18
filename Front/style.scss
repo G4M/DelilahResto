@@ -13,7 +13,7 @@ body{
 header{
     width: 100%;
     height: 20vh;
-    background-color: lightcoral;
+    background-color: rgb(83, 206, 228);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -34,6 +34,7 @@ section{
         border: 1px solid black;
         font-size: 1em;
         color: lightseagreen;
+        margin-left: 15px;
     }
 }
 .botones{
@@ -45,7 +46,7 @@ section{
         width: 60vw;
     }        
     .start{
-        background-color: lightcoral;
+        background-color: rgb(233, 109, 71);
         color: white;
         height: 15vh;
         border-radius: 50px;
