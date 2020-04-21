@@ -3,9 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="./styleRegistred.css">
+    <title>Delilah Resto</title>
 </head>
 <body>
-    Pedido Registrado
+    <header><h1>Delilah Restó</h1></header>
+    <h4>Pedido Registrado</h4>
+        <section class="registred" id="registred">
+            <img src="./PackOk.png" alt="">
+            <h2>¡Recibimos tu pedido!</h2>
+            <p><span class="user" id="user"></span>gracias por pedir a Delilah. Puedes seguir tu pedido para saber dónde está</p>
+        </section>
+    
+    <section class="follow" id="follow">
+        <button class="pedido" id="pedido" onclick="getFollow(pedidos)">SEGUIR PEDIDO</button>
+    </section>
+    <script src="./registred.js"></script>
 </body>
 </html>

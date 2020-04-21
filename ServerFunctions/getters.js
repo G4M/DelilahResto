@@ -10,7 +10,7 @@ router.use(bodyparser.json());
 router.get('/*', async (req,res)=>{
     if(!req.query.token){res.status(400).send('Error: Solicitud Incorrecta Falta Token');}
     if(req.path=='/usuarios'||req.path=='/productos'||req.path=='/pedidos'||req.path=='/usuario'
-    ||req.path=='/producto'||req.path=='/pedido'||req.path=='/pedidosxiduser'){
+    ||req.path=='/producto'||req.path=='/pedido'||req.path=='/pedidosxiduser'||req.path=='/productosxpedidos'){
     const result = await getAll(req);
     if(result){
     res.json(result);}else{
@@ -49,7 +49,15 @@ return datos;
     return(res);
 });
 return datos;
-}else if(endpoint=='/producto'){
+}else if(endpoint=='/productosxpedidos'){
+    datos = await sequelize.query('SELECT * FROM productosxpedidos where id_pedido = ?',
+    {replacements: [endpoints.query.id], type: sequelize.QueryTypes.SELECT}
+).then(res=>{
+    return(res);
+});
+return datos;
+}
+else if(endpoint=='/producto'){
     datos = await sequelize.query('SELECT * FROM productos where id = ?',
     {replacements: [endpoints.query.id], type: sequelize.QueryTypes.SELECT}
 ).then(res=>{
