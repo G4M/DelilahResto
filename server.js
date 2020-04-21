@@ -12,7 +12,7 @@ const login = require('./ServerFunctions/login');
 const register = require('./ServerFunctions/register');
 const update = require('./ServerFunctions/update')
 
-//Implementación de endpoints
+//endpoints
 server.use(cors());
 server.use('/get', gettersRoute);
 server.use('/api', login);

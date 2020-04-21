@@ -1,11 +1,11 @@
 const router = require('express').Router();
 const bodyparser = require('body-parser');
-router.use(bodyparser.json());
 const jwt = require('jsonwebtoken');
 const firma = 'DelilahResto';
 const Sequelize = require('sequelize');
 const sequelize = new Sequelize('mysql://root:@localhost:3306/delilahresto');
 const sql = require('mysql2');
+router.use(bodyparser.json());
 
 router.get('/*', async (req,res)=>{
     if(!req.query.token){res.status(400).send('Error: Solicitud Incorrecta Falta Token');}

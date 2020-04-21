@@ -1,0 +1,67 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+header {
+  width: 100%;
+  height: 30px;
+  background-color: #53cee4;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.allProducts {
+  width: 100%; }
+
+.productCont {
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5px;
+  margin-left: 15px; }
+
+.textCont {
+  width: 70%;
+  justify-self: right; }
+
+.productImg {
+  max-width: 20%;
+  max-height: 20vh; }
+
+.mas {
+  background-color: #e96d47;
+  color: white;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+  font-weight: bolder; }
+
+.min {
+  background-color: #e9d947;
+  color: black;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3em;
+  font-weight: bolder;
+  padding-bottom: 10px; }
+
+.pedir {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .pedir .pedido {
+    width: 30%;
+    height: 30px; }
+
+/*# sourceMappingURL=styleApp.css.map */
