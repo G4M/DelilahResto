@@ -1,10 +1,9 @@
 const express = require('express');
 const server = express();
 const bodyparser = require('body-parser');
-const Sequelize = require('sequelize');
 const cors = require('cors');
 
-server.listen(3000, () => {console.log("Se Inicio el Servidor en el puerto 3000");});
+server.listen(3000, () => { console.log("Se Inicio el Servidor en el puerto 3000"); });
 server.use(bodyparser.json());
 
 //Importacion de Funciones
