@@ -18,7 +18,7 @@ register.post('/productos', async (req, res) => {
         res.status(500).send('Error: El usuario no tiene permisos para la acción que desea realizar');
     }
     else if (!req.body.nombre || !req.body.precio || !req.body.urlimagen) {
-        res.status(500).send('Error: Faltan parametros');
+        res.status(501).send('Error: Faltan parametros');
     }
     else {
         let datosproducto = await sequelize.query('INSERT INTO productos VALUES(null, ?, ?, ?)',

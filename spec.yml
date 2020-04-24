@@ -1,0 +1,491 @@
+openapi: 3.0.2
+info:
+  title: Delilah Resto
+  description: Modelo Api 
+  version: 1.0.0
+  
+tags:
+- name: "Get"
+  description: "usuario/s, producto/s, pedido/s, pedidosxiduser, productosxpedidos"
+- name: "Api"
+  description: "Endpoints de Login"
+- name: "Register"
+  description: "Endpoints para registrar"
+- name: "Update"
+  description: "Endpoints para actualizar"
+- name: "Delete"
+  description: "Endpoints de Eliminacion"
+  
+paths:
+  /get/usuarios: #OK
+    get:
+      tags: 
+        - Get
+      summary: Obtener usuario/s
+      description: Si el token corresponde a un admin se le devolveran todos los usuarios resgistrados, si corresponde a un user se le devolveran los datos de ese usuario.
+      parameters: 
+        - in: query
+          name: token
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Ok
+          content: 
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Usuario"
+        401:
+          description: Token invalido 
+  /get/productos: #OK
+    get:
+      tags:
+        - Get
+      summary: Obtener listado de productos
+      description: Se verifica token y devuelve json de productos disponibles.
+      parameters: 
+        - in: query
+          name: token
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Ok
+          content: 
+            json:
+              schema:
+                "$ref": "#/components/schemas/Producto"
+        401:
+          description: Token invalido
+  /get/producto:  #OK
+    get:
+      tags:
+        - Get
+      summary: Obtener listado de productos
+      description: Se verifica token y devuelve json del producto solicitado.
+      parameters: 
+        - in: query
+          name: token
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Ok
+          content: 
+            json:
+              schema:
+                "$ref": "#/components/schemas/Producto"
+        401:
+          description: Token / id invalido
+  /get/pedidos: #OK
+    get:
+      tags:
+        - Get
+      summary: Obtener listado de pedidos
+      description: Se verifica token y devuelve todos los pedidos si corresponde a un admin o los pedidos correspondientes al usuario solicitante en caso de ser user.
+      parameters: 
+        - in: query
+          name: token
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Ok
+          content: 
+            json:
+              schema:
+                "$ref": "#/components/schemas/PedidoSolo"
+        400:
+          description: Solicitud incorrecta / No result #OK
+  /get/productosxpedido: #OK
+    get:
+      tags:
+        - Get
+      summary: Obtener detalle de pedido
+      description: Obtener articulos correspondientes a un id de pedido
+      parameters: 
+        - in: query
+          name: token
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: id
+          required: true
+          description: Id correspondiente al pedido
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Ok
+          content: 
+            json:
+              schema:
+                "$ref": "#/components/schemas/ProductIdResponse"
+        400:
+          description: Solicitud incorrecta / No result #OK #OK
+  
+  /api/login: #OK
+    post:
+      tags: 
+        - Api
+      summary: Logueo de usuario
+      description: Validacion del usuario y Token de respuesta.
+      requestBody:
+        content:
+          json:
+            schema:
+              $ref: '#/components/schemas/loginReq'
+        description: Usuario y Contraseña
+      responses:
+        200:
+          description: Token de validación.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/login"
+                
+        400:
+          description: "Error: Mail o contraseña incorrecto" #OK
+
+  /register/newUser: #OK
+    post:
+      tags: 
+        - Register
+      summary: Registrar nuevo usuario
+      description: Registro de usuario
+      requestBody:
+        content:
+          json:
+            schema:
+              $ref: '#/components/schemas/UsuarioR'
+        description: Usuario y Contraseña
+      responses: # Reponse. Se puede agregar todo los codigos posibles.
+        201:
+          description: Usuario Registrado
+        400:
+          description: Usuario / Mail ya registrado
+        500:
+          description: Faltan Parametros
+  /register/productos: #OK
+    post:
+      tags: 
+        - Register
+      summary: Agregar producto
+      parameters: 
+        - in: query
+          name: token
+          required: true
+          schema:
+            type: string
+      responses:
+        201:
+          description: Producto registrado exitosamente
+        400:
+          description: "Solicitud Incorrecta Token"
+        401:
+          description: "Token Invalido"
+        500:
+          description: "El usuario no tiene permisos para la acción que desea realizar"
+        501:
+          description: 'Faltan parametros'
+      requestBody:
+        content:
+          json:
+            schema:
+              $ref: '#/components/schemas/ProductoR'
+        description: Producto a agregar
+  /register/pedidos: #OK
+    post:
+      tags: 
+        - Register
+      summary: Registrar nuevo pedido
+      parameters: 
+        - in: query
+          name: token
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          json:
+            schema:
+              $ref: '#/components/schemas/ProductIdResponse'
+      responses:
+        201:
+          description: "El pedido se registro correctamente"
+        400:
+          description: "Solicitud Incorrecta Token / Faltan Parametros"
+        401:
+          description: "Token Invalido"
+        
+  /update/pedidos: #OK
+    patch:
+      tags: 
+        - Update
+      summary: Modificar estado de un pedido
+      description: El token debe corresponder a un usuario tipo admin
+      parameters: 
+        - in: query
+          name: token
+          required: true
+          schema:
+            type: string
+      responses:
+        201:
+          description: "Pedido Modificado Correctamente"
+        500:
+          description: "Faltan o hay parametros erroneos"
+        400:
+          description: 'Solicitud incorrecta Token'
+        401:
+          description: 'Token Invalido'
+      requestBody:
+        content:
+          json:
+            schema:
+              $ref: '#/components/schemas/PedidoEstado'
+        description: Id pedido a modificar y nuevo Estado
+        
+  /delete/usuario:
+    delete:
+      tags: 
+        - Delete
+      summary: Eliminar un Usuario
+      description: El token debe corresponder a un usuario admin.
+      parameters: 
+        - in: query
+          name: token
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: "Usuario Eliminado"
+        401:
+          description: "Token invalido" 
+        500:
+          description: "Faltan o hay parametros erroneos"
+  /delete/producto:
+    delete:
+      tags: 
+        - Delete
+      summary: Eliminar un Producto
+      description: El token debe corresponder a un usuario admin.
+      parameters: 
+        - in: query
+          name: token
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: "Producto Eliminado"
+        401:
+          description: "Token invalido" 
+        500:
+          description: "Faltan o hay parametros erroneos"
+  /delete/pedido:
+    delete:
+      tags: 
+        - Delete
+      summary: Eliminar un Pedido
+      description: El token debe corresponder a un usuario admin.
+      parameters: 
+        - in: query
+          name: token
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: "Pedido Eliminado"
+        401:
+          description: "Token invalido" 
+        500:
+          description: "Faltan o hay parametros erroneos"
+
+components:
+  schemas:
+    login:
+      type: object
+      required: 
+        - email
+        - pass
+      properties:
+        Token:
+          type: string
+          example: "eyJhbGciOiJIUzI1NiIsInR5cCI6ikpXVCJ9.eyJpZCI6MywidXnlcm5hbWUiOiJ1c2VybmFtZSIsImVtYWlsIjoiZW1haWxAZW1haWwuY28tIiwidXNlcnR5cGUiOiJ1c2VyIiwiaWF0IjoxNTg3NTk5MjI3fQ.e4VeGROenIfmugForBKo3QWRgZo6qI-Addwy2-qbqGM"
+    loginReq:
+      type: object
+      required: 
+        - email
+        - pass
+      properties:
+        email:
+          type: string
+          example: "user@email.com"
+        pass:
+          type: string
+          example: "1234"
+    Usuario:
+      type: object
+      required: 
+        - username
+        - email
+        - tel
+        - pass
+        - adress
+      properties:
+        id:
+          type: integer
+        username:
+          type: string
+          example: Jhon22
+        email:
+          type: string
+          example: jhon22@gmail.com
+        tel:
+          type: integer
+          example: 1599665533
+        pass:
+          type: string
+        adress:
+          type: string
+          example: "Buenos Aires 3524"
+        usertype:
+          type: string
+          example: adrmin / user
+    UsuarioR:
+      type: object
+      required: 
+        - username
+        - email
+        - tel
+        - pass
+        - adress
+      properties:
+        username:
+          type: string
+          example: Jhon22
+        email:
+          type: string
+          example: jhon22@gmail.com
+        tel:
+          type: integer
+          example: 1599665533
+        pass:
+          type: string
+        adress:
+          type: string
+          example: "Buenos Aires 3524"
+    Producto:
+      type: "object"
+      required: 
+        - id
+        - nombre
+        - precio
+        - urlimagen
+      properties:
+        id:
+          type: integer
+          format: int
+        nombre:
+          type: string
+          example: Hamburguesa con queso
+        precio:
+          type: integer
+          example: 250
+        urlimagen:
+          type: "string"
+          description: "URL de una imagen"
+          example: "https://images.com/img.jpg"
+    ProductoR:
+      type: "object"
+      required: 
+        - nombre
+        - precio
+        - urlimagen
+      properties:
+        nombre:
+          type: string
+          example: Hamburguesa con queso
+        precio:
+          type: integer
+          example: 250
+        urlimagen:
+          type: "string"
+          description: "URL de una imagen"
+          example: "https://images.com/img.jpg"
+    ProductIdResponse:
+      type: "object"
+      required: 
+        - token
+        - id
+      properties:
+        productos:
+          type: array
+          items: 
+            type: integer
+            example: [1,2]
+    PedidoSolo:
+      type: "object"
+      required: 
+        - token
+        - productos
+      properties:
+        id:
+          type: integer
+          format: int
+        estado:
+          type: string
+          format: enum
+          example: "NUEVO / CONFIRMADO / PREPARANDO / ENVIANDO / CANCELADO / ENTREGADO "
+        hora:
+          type: string
+          format: "hh:mm:ss"
+        pago:
+          type: string
+          format: enum
+          example: "pendiente / efectivo"
+        usuario:
+          type: integer
+          example: 2
+          description: id_usuario
+    PedidoEstado:
+      type: "object"
+      required: 
+        - estado
+      properties:
+        id:
+          type: integer
+          format: int
+        estado:
+          type: string
+          format: enum
+          example: "NUEVO / CONFIRMADO / PREPARANDO / ENVIANDO / CANCELADO / ENTREGADO "
+          

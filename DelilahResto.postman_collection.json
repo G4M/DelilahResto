@@ -1,0 +1,406 @@
+{
+	"info": {
+		"_postman_id": "9c1130b8-8537-4122-8cc6-db82dd781189",
+		"name": "DelilahResto",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Registrar Nuevo Pedido",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"pedido\": [5,8]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/register/pedidos?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJ1c2VybmFtZSIsImVtYWlsIjoiZW1haWxAZW1haWwuY29tIiwidXNlcnR5cGUiOiJ1c2VyIiwiaWF0IjoxNTg3MDUzNDIzfQ.w0WxKzP52sgBC-Y9DpLqEpI0khc1TjaHFm0uAnDlai4",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"register",
+						"pedidos"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJ1c2VybmFtZSIsImVtYWlsIjoiZW1haWxAZW1haWwuY29tIiwidXNlcnR5cGUiOiJ1c2VyIiwiaWF0IjoxNTg3MDUzNDIzfQ.w0WxKzP52sgBC-Y9DpLqEpI0khc1TjaHFm0uAnDlai4"
+						},
+						{
+							"key": "pedido",
+							"value": "[5,8]",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registrar Nuevo Usuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"username\" : \"Usuario Prueba\",\n \"fullname\" : \"Fullname Prueba\",\n \"email\" : \"Email@Prueba.com\",\n \"tel\" : 123456,\n \"adress\": \"AdressPrueba\",\n \"pass\" : \"PassPrueba\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/register/newUser",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"register",
+						"newUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login de Admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"user\": \"admin@delilahresto.com\",\n\"pass\": \"admin\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/api/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"login"
+					]
+				},
+				"description": "http://127.0.0.1:3000/api/login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login de User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"user\": \"email@email.com\",\n\"pass\": \"pass\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/api/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Productos x Pedidos",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/get/productosxpedidos?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJ1c2VybmFtZSIsImVtYWlsIjoiZW1haWxAZW1haWwuY29tIiwidXNlcnR5cGUiOiJ1c2VyIiwiaWF0IjoxNTg3MDUzNDIzfQ.w0WxKzP52sgBC-Y9DpLqEpI0khc1TjaHFm0uAnDlai4&id=5",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"get",
+						"productosxpedidos"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJ1c2VybmFtZSIsImVtYWlsIjoiZW1haWxAZW1haWwuY29tIiwidXNlcnR5cGUiOiJ1c2VyIiwiaWF0IjoxNTg3MDUzNDIzfQ.w0WxKzP52sgBC-Y9DpLqEpI0khc1TjaHFm0uAnDlai4"
+						},
+						{
+							"key": "id",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Pedidos Admin",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/get/pedidos?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5AZGVsaWxhaHJlc3RvLmNvbSIsInVzZXJ0eXBlIjoiYWRtaW4iLCJpYXQiOjE1ODcwNTE4MjB9.BNql6BI5jO4as0l-WpOpTzMESprGUTtQUjNgX_B1cdA",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"get",
+						"pedidos"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5AZGVsaWxhaHJlc3RvLmNvbSIsInVzZXJ0eXBlIjoiYWRtaW4iLCJpYXQiOjE1ODcwNTE4MjB9.BNql6BI5jO4as0l-WpOpTzMESprGUTtQUjNgX_B1cdA"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Pedidos User",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/get/pedidos?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJ1c2VybmFtZSIsImVtYWlsIjoiZW1haWxAZW1haWwuY29tIiwidXNlcnR5cGUiOiJ1c2VyIiwiaWF0IjoxNTg3MDUzNDIzfQ.w0WxKzP52sgBC-Y9DpLqEpI0khc1TjaHFm0uAnDlai4",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"get",
+						"pedidos"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJ1c2VybmFtZSIsImVtYWlsIjoiZW1haWxAZW1haWwuY29tIiwidXNlcnR5cGUiOiJ1c2VyIiwiaWF0IjoxNTg3MDUzNDIzfQ.w0WxKzP52sgBC-Y9DpLqEpI0khc1TjaHFm0uAnDlai4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Usuarios Admin",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/get/usuarios?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5AZGVsaWxhaHJlc3RvLmNvbSIsInVzZXJ0eXBlIjoiYWRtaW4iLCJpYXQiOjE1ODcwNTE4MjB9.BNql6BI5jO4as0l-WpOpTzMESprGUTtQUjNgX_B1cdA",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"get",
+						"usuarios"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5AZGVsaWxhaHJlc3RvLmNvbSIsInVzZXJ0eXBlIjoiYWRtaW4iLCJpYXQiOjE1ODcwNTE4MjB9.BNql6BI5jO4as0l-WpOpTzMESprGUTtQUjNgX_B1cdA"
+						}
+					]
+				},
+				"description": "http://127.0.0.1:3000/get/usuarios?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5AZGVsaWxhaHJlc3RvLmNvbSIsInVzZXJ0eXBlIjoiYWRtaW4iLCJpYXQiOjE1ODcwNTE4MjB9.BNql6BI5jO4as0l-WpOpTzMESprGUTtQUjNgX_B1cdA"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Usuarios User",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/get/usuarios?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJ1c2VybmFtZSIsImVtYWlsIjoiZW1haWxAZW1haWwuY29tIiwidXNlcnR5cGUiOiJ1c2VyIiwiaWF0IjoxNTg3MDUzNDIzfQ.w0WxKzP52sgBC-Y9DpLqEpI0khc1TjaHFm0uAnDlai4",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"get",
+						"usuarios"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJ1c2VybmFtZSIsImVtYWlsIjoiZW1haWxAZW1haWwuY29tIiwidXNlcnR5cGUiOiJ1c2VyIiwiaWF0IjoxNTg3MDUzNDIzfQ.w0WxKzP52sgBC-Y9DpLqEpI0khc1TjaHFm0uAnDlai4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registrar Nuevo Producto",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"pedido\": [2, 5]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/register/productos?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5AZGVsaWxhaHJlc3RvLmNvbSIsInVzZXJ0eXBlIjoiYWRtaW4iLCJpYXQiOjE1ODcwNzcxMzh9.gQeKmWob1S6zzr6R0sFPoB96H0Qnx3mXEwZ2TvjVu-I",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"register",
+						"productos"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5AZGVsaWxhaHJlc3RvLmNvbSIsInVzZXJ0eXBlIjoiYWRtaW4iLCJpYXQiOjE1ODcwNzcxMzh9.gQeKmWob1S6zzr6R0sFPoB96H0Qnx3mXEwZ2TvjVu-I"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Pedido Admin",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:3000/delete/pedido?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5AZGVsaWxhaHJlc3RvLmNvbSIsInVzZXJ0eXBlIjoiYWRtaW4iLCJpYXQiOjE1ODc2OTA2ODB9.qz7RXuw-ALrSnRnZpOytQiyVAYoSi0BtENKyEhfodjY&id=8",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"delete",
+						"pedido"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5AZGVsaWxhaHJlc3RvLmNvbSIsInVzZXJ0eXBlIjoiYWRtaW4iLCJpYXQiOjE1ODc2OTA2ODB9.qz7RXuw-ALrSnRnZpOytQiyVAYoSi0BtENKyEhfodjY"
+						},
+						{
+							"key": "id",
+							"value": "8"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
