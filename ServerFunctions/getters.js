@@ -2,9 +2,7 @@ const router = require('express').Router();
 const bodyparser = require('body-parser');
 const jwt = require('jsonwebtoken');
 const firma = 'DelilahResto';
-const Sequelize = require('sequelize');
-const sequelize = new Sequelize('mysql://root:@localhost:3306/delilahresto');
-const sql = require('mysql2');
+const sequelize = require('./mysequelize');
 router.use(bodyparser.json());
 
 router.get('/*', async (req, res) => {

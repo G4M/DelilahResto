@@ -2,9 +2,7 @@ const update = require('express').Router();
 const bodyparser = require('body-parser');
 const jwt = require('jsonwebtoken');
 const firma = 'DelilahResto';
-const Sequelize = require('sequelize');
-const sql = require('mysql2');
-const sequelize = new Sequelize('mysql://root:@localhost:3306/delilahresto');
+const sequelize = require('./mysequelize');
 const hasher = require('./hasher');
 update.use(bodyparser.json());
 

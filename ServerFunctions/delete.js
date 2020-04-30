@@ -2,9 +2,7 @@ const deleter = require('express').Router();
 const bodyparser = require('body-parser');
 const jwt = require('jsonwebtoken');
 const firma = 'DelilahResto';
-const Sequelize = require('sequelize');
-const sql = require('mysql2');
-const sequelize = new Sequelize('mysql://root:@localhost:3306/delilahresto');
+const sequelize = require('./mysequelize');
 deleter.use(bodyparser.json());
 
 deleter.delete('/usuario', async(req,res)=>{
