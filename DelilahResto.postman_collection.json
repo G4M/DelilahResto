@@ -6,6 +6,71 @@
 	},
 	"item": [
 		{
+			"name": "Login de Admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"user\": \"admin@delilahresto.com\",\n\"pass\": \"admin\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/api/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"login"
+					]
+				},
+				"description": "http://127.0.0.1:3000/api/login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login de User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"user\": \"email@email.com\",\n\"pass\": \"pass\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/api/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Registrar Nuevo Pedido",
 			"request": {
 				"method": "POST",
@@ -81,13 +146,13 @@
 			"response": []
 		},
 		{
-			"name": "Login de Admin",
+			"name": "Registrar Nuevo Producto Admin",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\"user\": \"admin@delilahresto.com\",\n\"pass\": \"admin\"\n}",
+					"raw": "{\n\t\"nombre\": \"Papita paloro\",\n\t\"precio\": 123,\n\t\"urlimagen\": \"lajaulaloka.com\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -95,7 +160,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:3000/api/login",
+					"raw": "http://127.0.0.1:3000/register/productos?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5AZGVsaWxhaHJlc3RvLmNvbSIsInVzZXJ0eXBlIjoiYWRtaW4iLCJpYXQiOjE1ODcwNzcxMzh9.gQeKmWob1S6zzr6R0sFPoB96H0Qnx3mXEwZ2TvjVu-I",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -105,22 +170,27 @@
 					],
 					"port": "3000",
 					"path": [
-						"api",
-						"login"
+						"register",
+						"productos"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5AZGVsaWxhaHJlc3RvLmNvbSIsInVzZXJ0eXBlIjoiYWRtaW4iLCJpYXQiOjE1ODcwNzcxMzh9.gQeKmWob1S6zzr6R0sFPoB96H0Qnx3mXEwZ2TvjVu-I"
+						}
 					]
-				},
-				"description": "http://127.0.0.1:3000/api/login"
+				}
 			},
 			"response": []
 		},
 		{
-			"name": "Login de User",
+			"name": "Registrar Nuevo Producto User",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\"user\": \"email@email.com\",\n\"pass\": \"pass\"\n}",
+					"raw": "{\n\t\"nombre\": \"Papita paloro\",\n\t\"precio\": 123,\n\t\"urlimagen\": \"lajaulaloka.com\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -128,7 +198,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:3000/api/login",
+					"raw": "http://127.0.0.1:3000/register/productos?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJ1c2VybmFtZSIsImVtYWlsIjoiZW1haWxAZW1haWwuY29tIiwidXNlcnR5cGUiOiJ1c2VyIiwiaWF0IjoxNTg3MDUzNDIzfQ.w0WxKzP52sgBC-Y9DpLqEpI0khc1TjaHFm0uAnDlai4",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -138,8 +208,14 @@
 					],
 					"port": "3000",
 					"path": [
-						"api",
-						"login"
+						"register",
+						"productos"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJ1c2VybmFtZSIsImVtYWlsIjoiZW1haWxAZW1haWwuY29tIiwidXNlcnR5cGUiOiJ1c2VyIiwiaWF0IjoxNTg3MDUzNDIzfQ.w0WxKzP52sgBC-Y9DpLqEpI0khc1TjaHFm0uAnDlai4"
+						}
 					]
 				}
 			},
@@ -331,21 +407,12 @@
 			"response": []
 		},
 		{
-			"name": "Registrar Nuevo Producto",
+			"name": "Delete Pedido User",
 			"request": {
-				"method": "POST",
+				"method": "DELETE",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"pedido\": [2, 5]\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
 				"url": {
-					"raw": "http://127.0.0.1:3000/register/productos?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5AZGVsaWxhaHJlc3RvLmNvbSIsInVzZXJ0eXBlIjoiYWRtaW4iLCJpYXQiOjE1ODcwNzcxMzh9.gQeKmWob1S6zzr6R0sFPoB96H0Qnx3mXEwZ2TvjVu-I",
+					"raw": "http://127.0.0.1:3000/delete/pedido?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJ1c2VybmFtZSIsImVtYWlsIjoiZW1haWxAZW1haWwuY29tIiwidXNlcnR5cGUiOiJ1c2VyIiwiaWF0IjoxNTg3MDUzNDIzfQ.w0WxKzP52sgBC-Y9DpLqEpI0khc1TjaHFm0uAnDlai4&id=8",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -355,13 +422,17 @@
 					],
 					"port": "3000",
 					"path": [
-						"register",
-						"productos"
+						"delete",
+						"pedido"
 					],
 					"query": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5AZGVsaWxhaHJlc3RvLmNvbSIsInVzZXJ0eXBlIjoiYWRtaW4iLCJpYXQiOjE1ODcwNzcxMzh9.gQeKmWob1S6zzr6R0sFPoB96H0Qnx3mXEwZ2TvjVu-I"
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJ1c2VybmFtZSIsImVtYWlsIjoiZW1haWxAZW1haWwuY29tIiwidXNlcnR5cGUiOiJ1c2VyIiwiaWF0IjoxNTg3MDUzNDIzfQ.w0WxKzP52sgBC-Y9DpLqEpI0khc1TjaHFm0uAnDlai4"
+						},
+						{
+							"key": "id",
+							"value": "8"
 						}
 					]
 				}
@@ -395,6 +466,267 @@
 						{
 							"key": "id",
 							"value": "8"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Usuario User",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:3000/delete/usuario?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJ1c2VybmFtZSIsImVtYWlsIjoiZW1haWxAZW1haWwuY29tIiwidXNlcnR5cGUiOiJ1c2VyIiwiaWF0IjoxNTg3MDUzNDIzfQ.w0WxKzP52sgBC-Y9DpLqEpI0khc1TjaHFm0uAnDlai4&id=4",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"delete",
+						"usuario"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJ1c2VybmFtZSIsImVtYWlsIjoiZW1haWxAZW1haWwuY29tIiwidXNlcnR5cGUiOiJ1c2VyIiwiaWF0IjoxNTg3MDUzNDIzfQ.w0WxKzP52sgBC-Y9DpLqEpI0khc1TjaHFm0uAnDlai4"
+						},
+						{
+							"key": "id",
+							"value": "4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Usuario Admin",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:3000/delete/usuario?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5AZGVsaWxhaHJlc3RvLmNvbSIsInVzZXJ0eXBlIjoiYWRtaW4iLCJpYXQiOjE1ODc2OTA2ODB9.qz7RXuw-ALrSnRnZpOytQiyVAYoSi0BtENKyEhfodjY&id=4",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"delete",
+						"usuario"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5AZGVsaWxhaHJlc3RvLmNvbSIsInVzZXJ0eXBlIjoiYWRtaW4iLCJpYXQiOjE1ODc2OTA2ODB9.qz7RXuw-ALrSnRnZpOytQiyVAYoSi0BtENKyEhfodjY"
+						},
+						{
+							"key": "id",
+							"value": "4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Producto User",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:3000/delete/producto?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJ1c2VybmFtZSIsImVtYWlsIjoiZW1haWxAZW1haWwuY29tIiwidXNlcnR5cGUiOiJ1c2VyIiwiaWF0IjoxNTg3MDUzNDIzfQ.w0WxKzP52sgBC-Y9DpLqEpI0khc1TjaHFm0uAnDlai4&id=3",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"delete",
+						"producto"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJ1c2VybmFtZSIsImVtYWlsIjoiZW1haWxAZW1haWwuY29tIiwidXNlcnR5cGUiOiJ1c2VyIiwiaWF0IjoxNTg3MDUzNDIzfQ.w0WxKzP52sgBC-Y9DpLqEpI0khc1TjaHFm0uAnDlai4"
+						},
+						{
+							"key": "id",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Producto Admin",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:3000/delete/producto?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5AZGVsaWxhaHJlc3RvLmNvbSIsInVzZXJ0eXBlIjoiYWRtaW4iLCJpYXQiOjE1ODc2OTA2ODB9.qz7RXuw-ALrSnRnZpOytQiyVAYoSi0BtENKyEhfodjY&id=4",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"delete",
+						"producto"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5AZGVsaWxhaHJlc3RvLmNvbSIsInVzZXJ0eXBlIjoiYWRtaW4iLCJpYXQiOjE1ODc2OTA2ODB9.qz7RXuw-ALrSnRnZpOytQiyVAYoSi0BtENKyEhfodjY"
+						},
+						{
+							"key": "id",
+							"value": "4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Nombrar Administrador",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": 4\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/update/newAdmin?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5AZGVsaWxhaHJlc3RvLmNvbSIsInVzZXJ0eXBlIjoiYWRtaW4iLCJpYXQiOjE1ODgyMzM1NzB9.diYC0Dqo-USKI4OT7wkJga37IxtLUiwlwT1pRt_kH8U",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"update",
+						"newAdmin"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5AZGVsaWxhaHJlc3RvLmNvbSIsInVzZXJ0eXBlIjoiYWRtaW4iLCJpYXQiOjE1ODgyMzM1NzB9.diYC0Dqo-USKI4OT7wkJga37IxtLUiwlwT1pRt_kH8U"
+						},
+						{
+							"key": "pedido",
+							"value": "[5,8]",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modificar Producto",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": 9,\n\t\"campo\": \"precio\",\n\t\"valor\": 180\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/update/productos?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5AZGVsaWxhaHJlc3RvLmNvbSIsInVzZXJ0eXBlIjoiYWRtaW4iLCJpYXQiOjE1ODgyMzM1NzB9.diYC0Dqo-USKI4OT7wkJga37IxtLUiwlwT1pRt_kH8U",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"update",
+						"productos"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5AZGVsaWxhaHJlc3RvLmNvbSIsInVzZXJ0eXBlIjoiYWRtaW4iLCJpYXQiOjE1ODgyMzM1NzB9.diYC0Dqo-USKI4OT7wkJga37IxtLUiwlwT1pRt_kH8U"
+						},
+						{
+							"key": "pedido",
+							"value": "[5,8]",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modificar Usuario",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": 5,\n\t\"campo\": \"fullname\",\n\t\"valor\": \"Esteban Quito\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/update/usuarios?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5AZGVsaWxhaHJlc3RvLmNvbSIsInVzZXJ0eXBlIjoiYWRtaW4iLCJpYXQiOjE1ODgyMzM1NzB9.diYC0Dqo-USKI4OT7wkJga37IxtLUiwlwT1pRt_kH8U",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"update",
+						"usuarios"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5AZGVsaWxhaHJlc3RvLmNvbSIsInVzZXJ0eXBlIjoiYWRtaW4iLCJpYXQiOjE1ODgyMzM1NzB9.diYC0Dqo-USKI4OT7wkJga37IxtLUiwlwT1pRt_kH8U"
+						},
+						{
+							"key": "pedido",
+							"value": "[5,8]",
+							"disabled": true
 						}
 					]
 				}

@@ -15,7 +15,7 @@ deleter.delete('/usuario', async(req,res)=>{
           });
         let permiso = (usuario.usertype==='admin');
     if(permiso!==true||!req.query.id){
-        res.status(500).send('Error: Faltan o hay parametros erroneos');
+        res.status(500).send('Error: No tiene permisos para realizar la acción requerida / Faltan parametros');
 }else if(req.query.id){
     let datosdelete = await sequelize.query('DELETE FROM usuarios where id = ?',
     {replacements: [req.query.id]})
@@ -35,7 +35,7 @@ deleter.delete('/pedido', async(req,res)=>{
           });
         let permiso = (usuario.usertype==='admin');
     if(permiso!==true||!req.query.id){
-        res.status(500).send('Error: Faltan o hay parametros erroneos');
+        res.status(500).send('Error: No tiene permisos para realizar la acción requerida / Faltan parametros');
 }else if(req.query.id){
     let datosdelete = await sequelize.query('DELETE FROM pedidos where id = ?',
     {replacements: [req.query.id]})
@@ -60,7 +60,7 @@ deleter.delete('/producto', async(req,res)=>{
           });
         let permiso = (usuario.usertype==='admin');
     if(permiso!==true||!req.query.id){
-        res.status(500).send('Error: Faltan o hay parametros erroneos');
+        res.status(500).send('Error: No tiene permisos para realizar la acción requerida / Faltan parametros');
 }else if(req.query.id){
     let datosdelete = await sequelize.query('DELETE FROM productos where id = ?',
     {replacements: [req.query.id]})
