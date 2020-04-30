@@ -6,6 +6,31 @@ const sql = require('mysql2');
 const sequelize = new Sequelize('mysql://root:@localhost:3306/delilahresto');
 const hasher = require('./hasher');
 
+register.post('/newAdmin', async (req, res) => {
+    if (!req.query.token) { res.status(400).send('Error: Solicitud Incorrecta Token'); }
+    let usuario = await jwt.verify(req.query.token, firma, function (err, user) {
+        if (err) {
+            res.status(401).send({ error: 'Token inválido' })
+        } else { return (user); }
+    });
+    let permiso = (usuario.usertype === 'admin');
+    if (permiso !== true) {
+        res.status(500).send('Error: El usuario no tiene permisos para la acción que desea realizar');
+    }
+    else if (!req.body.id) {
+        res.status(501).send('Error: Faltan parametros');
+    }
+    else {
+        let datosproducto = await sequelize.query('UPDATE usuarios set usertype = "admin" where id = ?',
+            { replacements: [req.body.id] })
+            .then(function (resultados) {
+                res.status(201).send('Se han cocedido permisos de Administrador al usuario id: '+req.body.id);
+            });
+    }
+
+});
+
+
 register.post('/productos', async (req, res) => {
     if (!req.query.token) { res.status(400).send('Error: Solicitud Incorrecta Token'); }
     let usuario = await jwt.verify(req.query.token, firma, function (err, user) {
@@ -77,7 +102,7 @@ register.post('/newUser', async (req, res) => {
 });
 
 async function createUser(username, fullname, email, tel, adress, pass) {
-    let datos = await sequelize.query('INSERT INTO usuarios VALUES(null, ?, ?, ?, ?, ?, ?)',
+    let datos = await sequelize.query('INSERT INTO usuarios (username,fullname,email,tel,adress,pass) VALUES(?, ?, ?, ?, ?, ?)',
         { replacements: [username, fullname, email, tel, adress, pass] })
         .then(function (resultados) {
             //console.log(resultados);
